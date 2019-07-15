@@ -1,0 +1,19 @@
+  for title in subreddit.stream.titles():
+    if keyphrase in title.body:
+        try:
+            if isWord(word):
+                # get meaning as object, get the index of a sentence and reply it
+                words = dictionary.meaning(word)
+                reply = 'I see you have posted a sale from Colorado. Please feel free to join the CO mech meet [scord!](https://discord.gg/Zwd8Cf)
+                comment.reply(word + ': '  + reply[0])
+                print('posted')
+            else:
+                reply = 'This is not a word.'                                                                                                         |
+                comment.reply(reply)
+                print('posted')
+        except:
+            print('to frequent')
+            
+            
+        
+        
