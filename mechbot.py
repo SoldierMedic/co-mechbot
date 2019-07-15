@@ -14,14 +14,15 @@ def bot_login():
         r = praw.Reddit(client_id='wqppgR-ndAYbWQ',
                          client_secret='fdqOswWb-8ydPKhkYWLV0lyjCX4',
                          username='ColoradoMechBot',
-                         password='pk6789475',
+                         password='colorado',
                          user_agent="keebsandtrees' CO Mech Meet bot v0.1")
         print ('Login Successful\n')
         return r
     except Exception as e:
         
         print(e)
-        os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "MechBot crashed. Error message is: "' + e.message)    
+        #os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "MechBot crashed. Error message is: "' + e.message)    
+        #fix that directory to get updates through pb.
         time.sleep(60)
 
 def main(r, contacted_list):
@@ -36,10 +37,11 @@ def main(r, contacted_list):
                 with open ("contacted_list.txt", "a") as f: 
                     f.write(str(submission.author) + "\n")
                     print("User: ",  submission.author, " added to contacted list.\n")
-                    os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "Contact added: "' + str(submission.author))    
-            
+                    #os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "Contact added: "' + str(submission.author))    
+                    #fix that directory to get updates through pb.
         print("No results found \nSleeping for 30 minutes.")
-        os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "No contacts found: Retrying in 30mins "')    
+        #os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "No contacts found: Retrying in 30mins "')    
+        #fix that directory to get updates through pb.
         time.sleep(1800)
                 
     except praw.exceptions.APIException as e:
@@ -84,5 +86,6 @@ if __name__ == '__main__':
         except Exception as e:
             
             print(e)
-            os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "MechBot crashed. Error message is: "' + e.message)    
+            #os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "MechBot crashed. Error message is: "' + e.message)   
+            #fix that directory to get updates through pb.
             time.sleep(60)
