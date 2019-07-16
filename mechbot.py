@@ -34,8 +34,7 @@ def find_users(subreddit_name, contacted_list):
         if "[US-CO]" in submission.title and submission.author not in contacted_list:
             redditor_username = ("\n" + str(submission.author))
             contacted_list.append(submission.author)
-            r.redditor('/u/mechanically_minded').message('TEST', 'This is a test')
-            # r.reddit.redditor(redditor_username).message('Colorado Mech Meetup!',
+            r.reddit.redditor(redditor_username).message('Colorado Mech Meetup!',
                                                             # "Hey I noticed you're from Colorado. Did you know /u/KeebsAndTrees hosts a monthly CO Keyboard meet!? Come check out our [discord](https://discord.gg/FACZyp9) for more info.")
             with open("contacted_list.txt", "a") as f:
                 f.write(str(submission.author) + "\n")
