@@ -6,7 +6,7 @@ import praw
 import re
 import time
 import os
-# create the objects from the imported modules
+# create the objects from the importsd modules
 
 # Reddit api login
 
@@ -34,8 +34,7 @@ def find_users(subreddit_name, contacted_list):
         if "[US-CO]" in submission.title and submission.author not in contacted_list:
             redditor_username = ("\n" + str(submission.author))
             contacted_list.append(submission.author)
-            r.reddit.redditor(redditor_username).message('Colorado Mech Meetup!',
-                                                            # "Hey I noticed you're from Colorado. Did you know /u/KeebsAndTrees hosts a monthly CO Keyboard meet!? Come check out our [discord](https://discord.gg/FACZyp9) for more info.")
+            r.redditor(redditor_username).message('Colorado Mech Meetup!','Hey I noticed you are from Colorado. Did you know /u/KeebsAndTrees hosts a monthly CO Keyboard meet!? Come check out our [discord](https://discord.gg/FACZyp9) for more info.', from_subreddit=None)
             with open("contacted_list.txt", "a") as f:
                 f.write(str(submission.author) + "\n")
                 print("User: ", submission.author, " added to contacted list.\n")
@@ -44,8 +43,7 @@ def find_users(subreddit_name, contacted_list):
     print("No results found \nSleeping for 30 minutes.")
     time.sleep(1800)
     # os.system('/home/pi/Desktop/RedditBot/pushbullet.sh "No contacts found: Retrying in 30mins "')
-    # fix that directory to get updates through pb.
-
+    # fix that directory to get updates through pb
 
 def main(r):
     subreddit = r.subreddit('MechMarket')
@@ -69,7 +67,8 @@ def main(r):
          
 def get_contacted_list():
     if not os.path.isfile("contacted_list.txt"):
-        contacted_list = [] 
+        contacted_list = []
+        print("List unable to be found")
     else: 
         with open("contacted_list.txt", "r") as f:
             contacted_list = f.read()
